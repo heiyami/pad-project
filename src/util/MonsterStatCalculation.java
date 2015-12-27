@@ -16,7 +16,7 @@ public class MonsterStatCalculation {
      * @param scale        the scaling on the stat of the monster
      * @return             the stat value of monster at its current level
      */
-    public static int calculateCurrentStat(int min, int max, int lvlCurrent, int lvlMax, int scale) {
+    public static int calculateCurrentStat(int min, int max, int lvlCurrent, int lvlMax, Double scale) {
         int a = (max - min);
         int b = (lvlCurrent - 1);
         int c = (lvlMax - 1);
