@@ -5,10 +5,9 @@ package model;
  */
 public abstract class Skill {
 
-    private String skillName;
-    private String skillDesc;
+    protected String skillName;
+    protected String skillEffect;
 
-    public Skill() {
-    }
+    public Skill() { }
 
 }

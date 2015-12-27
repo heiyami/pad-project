@@ -1,39 +1,40 @@
 package model;
 
+import parsers.PadherderActiveSkillParser;
+
 /**
  * Created by Julian on 2015-12-23.
  */
 public class ActiveSkill extends Skill {
 
-    private String name;
-    private String description;
-    private int cooldown;
+    private int skillLevelMin;
+    private int skillLevelMax;
 
-    public ActiveSkill(String name, int cooldown, String desc) {
-        this.name = name;
-        this.cooldown = cooldown;
-        this.description = desc;
+    public ActiveSkill(String name) {
+        //TODO: Figure out how to handle the exception
+        PadherderActiveSkillParser.parseActiveSkillJson(name);
     }
 
-    public String getName() {
-        return name;
+    public ActiveSkill(String name, String effect, int skillLevelMin, int skillLevelMax) {
+        skillName = name;
+        skillEffect = effect;
+        this.skillLevelMin = skillLevelMin;
+        this.skillLevelMax = skillLevelMax;
     }
 
-    public String getDescription() {
-        return description;
+    public String getSkillName() {
+        return skillName;
     }
 
-    public int getCooldown() {
-        return cooldown;
+    public String getSkillEffect() {
+        return skillEffect;
     }
 
-    public void decrementCooldown() {
-        this.cooldown -= 1;
+    public int getSkillLevelMin() {
+        return skillLevelMin;
     }
 
-    public void increaseCooldown(int n) {
-        this.cooldown += n;
+    public int getSkillLevelMax() {
+        return skillLevelMax;
     }
-
-
 }

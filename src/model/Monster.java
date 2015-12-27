@@ -19,11 +19,11 @@ public class Monster {
     private int atkMin;
     private int hpMin;
     private int rcvMin;
-    private int lvlMin;
-    private int atkScale;
-    private int hpScale;
-    private int rcvScale;
+    private Double atkScale;
+    private Double hpScale;
+    private Double rcvScale;
     private int lvlCurrent;
+    private int awokenLvl;
     private int rarity;
     private int cost;
     private Element mainElement;
@@ -39,11 +39,48 @@ public class Monster {
      * Create a monster based on its unique ID by passing it to PadherderMonsterParser.
      */
     public Monster(String id) {
-        monsterId = id;
+        //TODO: Figure out how to handle the exception
+        PadherderMonsterParser.parseMonsterJsonById(id);
     }
 
     public String getMonsterId() {
         return monsterId;
+    }
+
+    public Monster(String monsterId, String monsterName,
+                   int rarity, int cost,
+                   int atkMax, int hpMax, int rcvMax, int lvlMax,
+                   int atkMin, int hpMin, int rcvMin,
+                   Double atkScale, Double hpScale, Double rcvScale,
+                   int lvlCurrent,
+                   Element mainElement, Element subElement,
+                   Type mainType, Type subType,
+                   Skill activeSkill, Skill leaderSkill,
+                   List<Awakening> awakenings,
+                   boolean bindResistant) {
+        this.monsterId = monsterId;
+        this.monsterName = monsterName;
+        this.atkMax = atkMax;
+        this.hpMax = hpMax;
+        this.rcvMax = rcvMax;
+        this.lvlMax = lvlMax;
+        this.atkMin = atkMin;
+        this.hpMin = hpMin;
+        this.rcvMin = rcvMin;
+        this.atkScale = atkScale;
+        this.hpScale = hpScale;
+        this.rcvScale = rcvScale;
+        this.lvlCurrent = lvlCurrent;
+        this.rarity = rarity;
+        this.cost = cost;
+        this.mainElement = mainElement;
+        this.subElement = subElement;
+        this.mainType = mainType;
+        this.subType = subType;
+        this.activeSkill = activeSkill;
+        this.leaderSkill = leaderSkill;
+        this.awakenings = awakenings;
+        this.bindResistant = bindResistant;
     }
 
     public int getCost() {
@@ -69,4 +106,10 @@ public class Monster {
     public void setLvlCurrent(int lvl) {
         lvlCurrent = lvl;
     }
+
+    public void setAwokenLvl(int lvl) {
+        awokenLvl = lvl;
+    }
+
+    //TODO: Create a method that returns true if a monster is 100% bind-resistant
 }
