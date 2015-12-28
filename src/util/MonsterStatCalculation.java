@@ -20,8 +20,8 @@ public class MonsterStatCalculation {
         int a = (max - min);
         int b = (lvlCurrent - 1);
         int c = (lvlMax - 1);
-        int d = b/c;
-        int e = (int) Math.pow(d,scale);
-        return min + b*e;
+        Double d = (double)b/(double)c;
+        Double e = Math.pow(d,scale);
+        return (int)(min + a*e);
     }
 }
